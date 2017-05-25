@@ -1,0 +1,109 @@
+﻿<Window x:Class="LABA2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LABA2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="363" Width="525">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <StackPanel Name="Main" Background="{StaticResource BackgroundBrush}">
+
+        <TextBlock  FontSize="35 " Text="Ваша корзина" VerticalAlignment="Bottom" Height="50" Margin="0,-4,0,0"   Style="{StaticResource textBlockStyle1}"/>
+        <TextBlock Grid.Row="1" FontSize="25" Text="Заказанные товары" VerticalAlignment="Bottom"  Height="37"  Style="{StaticResource textBlockStyle1}"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock   FontSize="20" Text="№" VerticalAlignment="Bottom"  Height="37" Margin="0,-4,0,0"   Style="{StaticResource textBlockStyle}" />
+            <TextBlock    FontSize="20" Text="Название" VerticalAlignment="Bottom" Height="37" Margin="20,0,20,0"   Style="{StaticResource textBlockStyle}" />
+            <TextBlock   FontSize="20" Text="Цена" VerticalAlignment="Bottom"  Height="37" Margin="20,0,20,0"   Style="{StaticResource textBlockStyle}"/>
+            <TextBlock   FontSize="20" Text="Кол-во" VerticalAlignment="Bottom" Height="37" Margin="20,0,20,0"  Style="{StaticResource textBlockStyle}"/>
+            <TextBlock   FontSize="20" Text="Стоймость" VerticalAlignment="Bottom"  Height="37" Margin="20,0,20,0"   Style="{StaticResource textBlockStyle}"/>
+        </StackPanel>
+        <StackPanel>
+            <ScrollViewer Grid.Row="1" Grid.ColumnSpan="6" VerticalScrollBarVisibility="Auto" Height="40" >
+
+                <ItemsControl  ItemsSource="{Binding MObils}"   ScrollViewer.VerticalScrollBarVisibility="Auto" >
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <DockPanel  Height="30">
+                                <TextBlock FontSize="17"  Width="45"  VerticalAlignment="Center" Style="{StaticResource textBlockStyle1}" Text="{Binding Path=Id}"></TextBlock>
+                                <TextBlock FontSize="17" Margin="20,5,20,5"  Width="45" VerticalAlignment="Center" Style="{StaticResource textBlockStyle1}"  Text="{Binding Path=name}"></TextBlock>
+                                <TextBlock FontSize="17" Margin="20,5,20,5"  Width="45"  VerticalAlignment="Center" Style="{StaticResource textBlockStyle1}"  Text="{Binding Path=Price}"></TextBlock>
+                                <Grid Margin="20,5,20,5"  Width="45">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox FontSize="17" Grid.Column="0" Text="{Binding Path=Number}" Style="{StaticResource textBoxStyle}"  VerticalAlignment="Center" Height="28" Width="28"/>
+                                    <Grid Grid.Column="1" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Button Command="{Binding AddCommand}"   Grid.Row="0"  Height="14" Width="14" Background="{StaticResource BackgroundBrusTop}"  />
+                                        <Button Command="{Binding DeleteCommand}"  Grid.Row="1"  Height="14" Width="14" Background="{StaticResource BackgroundBrushDown}" />
+                                    </Grid>
+                                </Grid>
+                                <TextBlock FontSize="17" Margin="20,5,20,5" HorizontalAlignment="Center" Style="{StaticResource textBlockStyle1}"  Width="45" Text="{Binding Cost}"></TextBlock>
+                                <Button FontSize="17" Margin="20,5,20,5"  Width="70" Height="30" VerticalAlignment="Center" Content="Удалить" Style="{StaticResource buttonStyle}"   Command="{Binding RemoveCommand}" CommandParameter="{Binding}" ></Button>
+                            </DockPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </StackPanel>
+
+        <TextBlock  Background="Black"   Height="2"/>
+
+        <Grid Grid.Row="4" Name="downCell" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="6*"></ColumnDefinition>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="245*"/>
+                <ColumnDefinition Width="259*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="37*"></RowDefinition>
+                <RowDefinition Height="115*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0"   FontSize="25" Text="ИТОГО"  Style="{StaticResource textBlockStyle1}"  Grid.ColumnSpan="3" Margin="0,8,0,5.853" ></TextBlock>
+
+            <TextBlock Grid.Row="0" Grid.Column="3"   FontSize="20" HorizontalAlignment="Right" Margin="0,11,0,9.853" Width="69" Text="{Binding Cost ,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource textBlockStyle}" />
+
+            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,0.147,0,-0.147">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="16*"></RowDefinition>
+                    <RowDefinition Height="43*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" FontSize="20" Text="Доставка" Margin="0,-10,0,0" Style="{StaticResource textBlockStyle1}"/>
+                <StackPanel Grid.Row="1" Grid.Column="0"   >
+                    <RadioButton GroupName="1" Content="Курьером" Height="20" FontSize="15 " IsChecked="{Binding IsLowPriority1}" Style="{StaticResource radiobuttonStyle}" />
+                    <RadioButton GroupName="1" Content="Самовывоз" Height="20" FontSize="15" IsChecked="{Binding IsMiddlePriority1}" Style="{StaticResource radiobuttonStyle}" />
+                    <RadioButton GroupName="1" Content="Почтомат" Height="20" FontSize="15" IsChecked="{Binding IsHighPriority1}" Style="{StaticResource radiobuttonStyle}" />
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.Column="3" Margin="0,0.147,0,-0.147">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="16*"></RowDefinition>
+                    <RowDefinition Height="43*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" FontSize="20" Text="Оплата" Margin="0,-10,0,0"  Style="{StaticResource textBlockStyle1}" />
+                <StackPanel Grid.Row="1">
+                    <RadioButton GroupName="2" Content="Наличными"  FontSize="15 " IsChecked="{Binding IsLowPriority}" Style="{StaticResource radiobuttonStyle}" />
+                    <RadioButton GroupName="2" Content="Банковской картой"  FontSize="15" IsChecked="{Binding IsMiddlePriority}" Style="{StaticResource radiobuttonStyle}" />
+                    <RadioButton GroupName="2" Content="Электронными деньгами"  FontSize="15" IsChecked="{Binding IsHighPriority}" Style="{StaticResource radiobuttonStyle}"/>
+                </StackPanel>
+            </Grid>
+
+        </Grid>
+
+    </StackPanel>
+
+</Window>

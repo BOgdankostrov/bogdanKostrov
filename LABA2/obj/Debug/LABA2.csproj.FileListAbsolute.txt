@@ -1,0 +1,15 @@
+c:\users\bogda\onedrive\документы\visual studio 2015\Projects\LABA2\LABA2\bin\Debug\LABA2.exe.config
+C:\Users\bogda\OneDrive\Документы\Visual Studio 2015\Projects\LABA2\LABA2\bin\Debug\LABA2.exe
+C:\Users\bogda\OneDrive\Документы\Visual Studio 2015\Projects\LABA2\LABA2\bin\Debug\LABA2.pdb
+C:\Users\bogda\OneDrive\Документы\Visual Studio 2015\Projects\LABA2\LABA2\obj\Debug\LABA2.csprojResolveAssemblyReference.cache
+C:\Users\bogda\OneDrive\Документы\Visual Studio 2015\Projects\LABA2\LABA2\obj\Debug\MainWindow.g.cs
+C:\Users\bogda\OneDrive\Документы\Visual Studio 2015\Projects\LABA2\LABA2\obj\Debug\App.g.cs
+C:\Users\bogda\OneDrive\Документы\Visual Studio 2015\Projects\LABA2\LABA2\obj\Debug\LABA2_MarkupCompile.cache
+C:\Users\bogda\OneDrive\Документы\Visual Studio 2015\Projects\LABA2\LABA2\obj\Debug\LABA2_MarkupCompile.lref
+C:\Users\bogda\OneDrive\Документы\Visual Studio 2015\Projects\LABA2\LABA2\obj\Debug\MainWindow.baml
+C:\Users\bogda\OneDrive\Документы\Visual Studio 2015\Projects\LABA2\LABA2\obj\Debug\LABA2.g.resources
+C:\Users\bogda\OneDrive\Документы\Visual Studio 2015\Projects\LABA2\LABA2\obj\Debug\LABA2.Properties.Resources.resources
+C:\Users\bogda\OneDrive\Документы\Visual Studio 2015\Projects\LABA2\LABA2\obj\Debug\LABA2.csproj.GenerateResource.Cache
+C:\Users\bogda\OneDrive\Документы\Visual Studio 2015\Projects\LABA2\LABA2\obj\Debug\LABA2.exe
+C:\Users\bogda\OneDrive\Документы\Visual Studio 2015\Projects\LABA2\LABA2\obj\Debug\LABA2.pdb
+C:\Users\bogda\OneDrive\Документы\Visual Studio 2015\Projects\LABA2\LABA2\obj\Debug\Resources.baml
