@@ -26,15 +26,69 @@ namespace LABA2
             set
             {
                 cost = value;
-                for(int i=0;i<MObils.Count;i++)
-                {
-                    cost += MObils[i].Cost;
-                }
+                RaisePropertyChanged("Cost");
             }
         }
-        public static void met()
+     
+        private RelayCommand addCommand;
+        public RelayCommand AAddCommand
         {
-            //MainWindowViewModel.Cost = 0;
+            get
+            {
+                return addCommand ??
+                  (addCommand = new RelayCommand(obj =>
+                  {
+                      mobilModelView phone = obj as mobilModelView;
+                      MObils[phone.id - 1].Number++;
+                      Cost += phone.price;
+                  },
+                 (obj) => MObils.Count > 0));
+            }
+        }
+        private RelayCommand deleteCommand;
+        public RelayCommand DeleteCommand
+        {
+            get
+            {
+                return deleteCommand ??
+                  (deleteCommand = new RelayCommand(obj =>
+                  {
+                      mobilModelView phone = obj as mobilModelView;
+                      if (phone.number > 0)
+                      {
+
+                          MObils[phone.id - 1].Number--;
+                          Cost -= phone.price;
+                      }
+
+                  },
+                 (obj) => MObils.Count > 0));
+            }
+        }
+
+        private RelayCommand removeCommand;
+        public RelayCommand RemoveCommand
+        {
+            get
+            {
+                return removeCommand ??
+                  (removeCommand = new RelayCommand(obj =>
+                  {
+                      mobilModelView phone = obj as mobilModelView;
+                      if (phone != null)
+                      {
+
+                          MObils.Remove(phone);
+
+                          for (int i = 0; i < MObils.Count; i++)
+                          {
+                              MObils[i].Id = i + 1;
+                          }
+                          Cost -= phone.cost;
+                      }
+                  },
+                 (obj) => MObils.Count > 0));
+            }
         }
 
         public mobilModelView selectedPhone;
@@ -48,7 +102,7 @@ namespace LABA2
             }
         }
 
-        public static ObservableCollection<mobilModelView> MObils { get; set; }
+        public  ObservableCollection<mobilModelView> MObils { get; set; }
         public MainWindowViewModel()
         {
             MObils = new ObservableCollection<mobilModelView>();
@@ -58,17 +112,16 @@ namespace LABA2
                 MObils.Add(new mobilModelView()
                 {
                     id = s.ID,
-
                     name = s.Name,
                     price = s.Price,
                     number = s.Number,
                     cost = s.Price* s.Number
-
-                });
-                Cost++;
-                
+                });                
+            }         
+                 for (int i = 0; i < MObils.Count; i++)
+            {
+                cost += MObils[i].Cost;
             }
-          
         }
 
         public mobilModelView SelectedPhone

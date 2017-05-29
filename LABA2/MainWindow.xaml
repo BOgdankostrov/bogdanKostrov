@@ -46,12 +46,12 @@
                                             <RowDefinition></RowDefinition>
                                             <RowDefinition></RowDefinition>
                                         </Grid.RowDefinitions>
-                                        <Button Command="{Binding AddCommand}"   Grid.Row="0"  Height="14" Width="14" Background="{StaticResource BackgroundBrusTop}"  />
-                                        <Button Command="{Binding DeleteCommand}"  Grid.Row="1"  Height="14" Width="14" Background="{StaticResource BackgroundBrushDown}" />
+                                        <Button  Command="{Binding DataContext.AAddCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"   CommandParameter="{Binding}"  Grid.Row="0"  Height="14" Width="14" Background="{StaticResource BackgroundBrusTop}" />
+                                        <Button  Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"   CommandParameter="{Binding}"  Grid.Row="1"  Height="14" Width="14" Background="{StaticResource BackgroundBrushDown}" />
                                     </Grid>
                                 </Grid>
                                 <TextBlock FontSize="17" Margin="20,5,20,5" HorizontalAlignment="Center" Style="{StaticResource textBlockStyle1}"  Width="45" Text="{Binding Cost}"></TextBlock>
-                                <Button FontSize="17" Margin="20,5,20,5"  Width="70" Height="30" VerticalAlignment="Center" Content="Удалить" Style="{StaticResource buttonStyle}"   Command="{Binding RemoveCommand}" CommandParameter="{Binding}" ></Button>
+                                <Button FontSize="17" Margin="20,5,20,5"  Width="70" Height="30" VerticalAlignment="Center" Content="Удалить" Style="{StaticResource buttonStyle}"   Command="{Binding DataContext.RemoveCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"   CommandParameter="{Binding}" ></Button>
                             </DockPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
@@ -72,7 +72,7 @@
                 <RowDefinition Height="37*"></RowDefinition>
                 <RowDefinition Height="115*"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0"   FontSize="25" Text="ИТОГО"  Style="{StaticResource textBlockStyle1}"  Grid.ColumnSpan="3" Margin="0,8,0,5.853" ></TextBlock>
+            <TextBlock Grid.Row="0"    FontSize="25" Text="ИТОГО"  Style="{StaticResource textBlockStyle1}"  Grid.ColumnSpan="3" Margin="0,8,0,5.853" ></TextBlock>
 
             <TextBlock Grid.Row="0" Grid.Column="3"   FontSize="20" HorizontalAlignment="Right" Margin="0,11,0,9.853" Width="69" Text="{Binding Cost ,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource textBlockStyle}" />
 

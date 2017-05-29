@@ -25,8 +25,6 @@ namespace LABA2
         }
 
         public int cost;
-        private RelayCommand addCommand;
-        public RelayCommand deleteCommand;
         public mobilModelView selectedPhone;
         public mobilModelView SelectedPhone
         {
@@ -42,57 +40,7 @@ namespace LABA2
         {
             cost = price * number;
         }
-        private RelayCommand removeCommand;
-        public RelayCommand RemoveCommand
-        {
-            get
-            {
-                return removeCommand ??
-                  (removeCommand = new RelayCommand(obj =>
-                  {
-                      mobilModelView phone = obj as mobilModelView;
-                      if (phone != null)
-                      {
-
-                          MainWindowViewModel.MObils.Remove(phone);
-                       
-                          for(int i=0;i< MainWindowViewModel.MObils.Count;i++)
-                          {
-                              MainWindowViewModel.MObils[i].Id = i+1;
-                          }
-                         // MainWindowViewModel.Cost = MainWindowViewModel.Cost + price * number;
-                      }
-                  },
-                 (obj) => MainWindowViewModel.MObils.Count > 0));
-
-               
-            }
-        }
-        public RelayCommand AddCommand
-        {
-            get
-            {
-                return addCommand ??
-                            (addCommand = new RelayCommand(obj =>
-                            {
-                                Number++;
-                              //  MainWindowViewModel.Cost = MainWindowViewModel.Cost + price;
-                            }));
-            }
-        }
-        public RelayCommand DeleteCommand
-        {
-            get
-            {
-                return deleteCommand ??
-                            (deleteCommand = new RelayCommand(obj =>
-                            {
-                                Number--;
-//MainWindowViewModel.Cost= MainWindowViewModel.Cost-price;
-                            }));
-            }
-        }
-
+ 
         public int Number
         {
             get
